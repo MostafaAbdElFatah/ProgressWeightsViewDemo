@@ -55,17 +55,17 @@ class WeightsView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         layoutWeightViews()
-        markerView.frame = convert(weigth: currentWeight)
+        markerView.frame = convert(weight: currentWeight)
         weightViews.first!.roundCorners(corners: [.topLeft, .bottomLeft], radius: 5)
         weightViews.last!.roundCorners(corners: [.topRight, .bottomRight], radius: 5)
         bringSubviewToFront( markerView)
     }
     
     
-    func convert(weigth:Int) -> CGRect {
+    func convert(weight:Int) -> CGRect {
         let totalLine:CGFloat = CGFloat(mostWeight - leastWeight)
-        let x:CGFloat = (CGFloat(weigth - leastWeight) * (bounds.width - 25)) / totalLine
-        return CGRect(x: x, y: 10, width: 50, height: 60)
+        let x:CGFloat = (CGFloat(weight - leastWeight) * bounds.width) / totalLine
+        return CGRect(x: x - 25, y: 18, width: 50, height: 60)
     }
     
     func convert(weight:Weight) -> CGRect {
